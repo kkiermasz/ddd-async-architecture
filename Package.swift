@@ -10,8 +10,9 @@ let package = Package(
         .library(
             name: "ddd-async-architecture",
             targets: [
-                "SwiftTemplate"
-            ]
+                "MovieCharactersDomain",
+                "MovieCharactersFeature",
+                "MovieCharactersData"            ]
         ),
     ],
     targets: [
@@ -28,11 +29,10 @@ let package = Package(
             ]
         ),
         .target(
-            name: "MovieCharactersDomain",
+            name: "MovieCharactersData",
             dependencies: [
                 "MovieCharactersDomain"
             ]
         ),
     ]
 )
-
