@@ -7,7 +7,7 @@ struct OnFirstAppearViewModifier: ViewModifier {
     // MARK: - Properties
 
     @State private var loaded = false
-    private let action: (() -> Void)
+    private let action: () -> Void
 
     // MARK: - Initializers
 

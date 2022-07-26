@@ -5,9 +5,9 @@
 //  Created by Jakub Kiermasz on 26/07/2022.
 //
 
-import MovieCharactersDomain
 import DashboardFeature
 import MovieCharactersData
+import MovieCharactersDomain
 import SwiftUI
 
 @main

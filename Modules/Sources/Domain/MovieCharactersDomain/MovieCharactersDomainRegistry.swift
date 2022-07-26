@@ -2,7 +2,7 @@
 
 /// Dependency container as a service locator replacement
 public final class MovieCharactersDomainRegistry {
-    
+
     public static func movieCharactersService(with repository: MovieCharactersRepository) -> MovieCharactersService {
         instance.repository = repository
         let service = DefaultMovieCharactersService(movieCharactersRepository: repository)
