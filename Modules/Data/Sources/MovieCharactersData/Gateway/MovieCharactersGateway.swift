@@ -8,7 +8,8 @@ final class MovieCharactersGateway: MovieCharactersRepository {
 
     // MARK: - Properties
 
-    private var characters: [MovieCharacterDataModel] = [] {
+    // initial data
+    private var characters: [MovieCharacterDataModel] = [.init(id: UUID(), name: "Foo", isFavorite: false)] {
         didSet {
             _charactersChanged.send(characters)
         }
@@ -27,6 +28,8 @@ final class MovieCharactersGateway: MovieCharactersRepository {
                 continuation.yield(data)
             }
             .store(in: &container)
+            let data = characters.map { MovieCharactersDomain.MovieCharacter(from: $0) }
+            continuation.yield(data)
         }
     }
 
