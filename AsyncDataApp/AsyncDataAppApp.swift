@@ -6,7 +6,7 @@
 //
 
 import MovieCharactersDomain
-import MovieCharactersFeature
+import DashboardFeature
 import MovieCharactersData
 import SwiftUI
 
@@ -14,12 +14,12 @@ import SwiftUI
 struct AsyncDataAppApp: App {
     var body: some Scene {
         WindowGroup {
-            MovieCharactersView()
+            DashboardView()
         }
     }
 }
 
-extension MovieCharactersView {
+extension DashboardView {
     init() {
         let repository = MovieCharactersDataDependencyRegistry.movieCharactersRepository
         let service = MovieCharactersDomainRegistry.movieCharactersService(with: repository)

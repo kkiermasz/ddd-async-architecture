@@ -8,8 +8,7 @@ final class MovieCharactersGateway: MovieCharactersRepository {
 
     // MARK: - Properties
 
-    // initial data
-    private var characters: [MovieCharacterDataModel] = [.init(id: UUID(), name: "Foo", isFavorite: false)] {
+    private var characters: [MovieCharacterDataModel] = [] {
         didSet {
             _charactersChanged.send(characters)
         }

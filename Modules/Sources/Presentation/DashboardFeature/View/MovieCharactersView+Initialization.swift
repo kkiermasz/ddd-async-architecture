@@ -2,9 +2,9 @@
 
 import MovieCharactersDomain
 
-extension MovieCharactersView {
+extension DashboardView {
     public init(service: MovieCharactersService) {
-        let model = DefaultMovieCharactersModel(service: service)
+        let model = DefaultDashboardModel(service: service)
         self.init(viewModel: MovieCharactersViewModel(model: model))
     }
 }

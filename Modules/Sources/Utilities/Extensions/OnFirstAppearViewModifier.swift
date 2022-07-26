@@ -2,34 +2,6 @@
 
 import SwiftUI
 
-public struct MovieCharactersView: View {
-
-    // MARK: - Properties
-
-    @ObservedObject private var viewModel: MovieCharactersViewModel
-
-    // MARK: - Initialization
-
-    init(viewModel: MovieCharactersViewModel) {
-        self.viewModel = viewModel
-    }
-
-    // MARK: - View
-
-    public var body: some View {
-        List(viewModel.content.characters, id: \.id) { character in
-            Text(character.name)
-        }
-        .listStyle(.insetGrouped)
-        .onFirstAppear {
-            viewModel.viewDidAppear()
-        }
-    }
-
-}
-
-
-
 struct OnFirstAppearViewModifier: ViewModifier {
 
     // MARK: - Properties
@@ -59,4 +31,3 @@ extension View {
         modifier(OnFirstAppearViewModifier(action: action))
     }
 }
-

@@ -2,7 +2,7 @@
 
 import MovieCharactersDomain
 
-protocol MovieCharactersModel: AnyObject {
+protocol DashboardModel: AnyObject {
 
     func observeCharacters() -> AsyncStream<[MovieCharacter]>
 

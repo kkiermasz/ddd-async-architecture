@@ -11,7 +11,7 @@
 --decimalgrouping 3,6
 --elseposition same-line
 --emptybraces no-space
---exclude Package.swift,Sources/Resources/Generated/*.swift
+--exclude Package.swift,Modules/Package.swift
 --exponentcase lowercase
 --exponentgrouping disabled
 --extensionacl on-declarations
@@ -71,4 +71,3 @@
 --yodaswap always
 --disable blankLinesAtEndOfScope,blankLinesAtStartOfScope,consecutiveBlankLines,fileHeader,initCoderUnavailable,leadingDelimiters,linebreaks,numberFormatting,redundantBackticks,redundantExtensionACL,redundantLet,redundantObjc,semicolons,spaceAroundBrackets,spaceAroundComments,spaceAroundGenerics,spaceAroundOperators,spaceAroundParens,spaceInsideBrackets,spaceInsideComments,spaceInsideGenerics,spaceInsideParens,void,wrapMultilineStatementBraces,yodaConditions
 --enable blankLinesBetweenImports,isEmpty,acronyms
---exclude Package.swift

@@ -9,11 +9,11 @@ final class MovieCharactersViewModel: ObservableObject {
 
     @Published private(set) var content: MovieCharactersViewContent = .empty
 
-    private let model: MovieCharactersModel
+    private let model: DashboardModel
 
     // MARK: - Initialization
 
-    init(model: MovieCharactersModel) {
+    init(model: DashboardModel) {
         self.model = model
     }
 
@@ -21,6 +21,7 @@ final class MovieCharactersViewModel: ObservableObject {
 
     @MainActor
     func viewDidAppear() {
+        // check dealloc
         Task {
             for await characters in model.observeCharacters() {
                 content = makeContent(for: characters)

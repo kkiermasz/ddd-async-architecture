@@ -2,7 +2,7 @@
 
 import MovieCharactersDomain
 
-final class DefaultMovieCharactersModel: MovieCharactersModel {
+final class DefaultDashboardModel: DashboardModel {
 
     // MARK: - Properties
 

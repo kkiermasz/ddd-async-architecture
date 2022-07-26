@@ -13,12 +13,6 @@ struct MovieCharacterDataModel {
 
     // MARK: - Initialization
 
-    init(id: UUID, name: String, isFavorite: Bool) {
-        self.id = id
-        self.name = name
-        self.isFavorite = isFavorite
-    }
-
     init(from model: MovieCharactersDomain.MovieCharacter) {
         self.id = model.id
         self.name = model.name
