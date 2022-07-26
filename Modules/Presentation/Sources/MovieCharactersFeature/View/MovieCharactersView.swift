@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct MovieCharactersView: View {
+public struct MovieCharactersView: View {
 
     // MARK: - Properties
 
@@ -10,15 +10,13 @@ struct MovieCharactersView: View {
 
     // MARK: - Initialization
 
-
-
     init(viewModel: MovieCharactersViewModel) {
         self.viewModel = viewModel
     }
 
     // MARK: - View
 
-    var body: some View {
+    public var body: some View {
         List(viewModel.content.characters, id: \.id) { character in
             Text(character.name)
         }

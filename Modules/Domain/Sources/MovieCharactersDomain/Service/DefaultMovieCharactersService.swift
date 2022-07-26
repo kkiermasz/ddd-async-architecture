@@ -33,29 +33,3 @@ final class DefaultMovieCharactersService: MovieCharactersService {
     }
 
 }
-
-enum DefaultMovieCharactersServiceError: LocalizedError {
-    case noCharacter(withId: UUID)
-}
-
-protocol MovieCharactersRepository: AnyObject {
-
-    func observeMovieCharacters() -> AsyncStream<[MovieCharacter]>
-    func fetchMovieCharacters() async -> [MovieCharacter]
-    func addToFavorites(movieCharacter: MovieCharacter) async
-    func addMovieCharacter(_ character: MovieCharacter)
-
-}
-
-//extension AsyncStream {
-//    @preconcurrency func map<Transformed>(_ transform: @escaping (Self.Element) async -> Transformed) -> AsyncStream<Transformed> {
-//        AsyncStream<Transformed> { continuation in
-//            Task {
-//                for await element in self {
-//                    let transformed = await transform(element)
-//                    continuation.yield(transformed)
-//                }
-//            }
-//        }
-//    }
-//}
