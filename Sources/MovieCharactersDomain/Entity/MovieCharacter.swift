@@ -5,6 +5,5 @@ import Foundation
 public struct MovieCharacter {
     public let id: UUID
     public let name: String
-    public let movie: String
     public let isFavorite: Bool
 }

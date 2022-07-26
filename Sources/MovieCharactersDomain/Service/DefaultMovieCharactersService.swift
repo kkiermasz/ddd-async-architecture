@@ -28,6 +28,10 @@ final class DefaultMovieCharactersService: MovieCharactersService {
         await movieCharactersRepository.addToFavorites(movieCharacter: character)
     }
 
+    func addMovieCharacter(_ character: MovieCharacter) {
+        movieCharactersRepository.addMovieCharacter(character)
+    }
+
 }
 
 enum DefaultMovieCharactersServiceError: LocalizedError {
@@ -39,6 +43,7 @@ protocol MovieCharactersRepository: AnyObject {
     func observeMovieCharacters() -> AsyncStream<[MovieCharacter]>
     func fetchMovieCharacters() async -> [MovieCharacter]
     func addToFavorites(movieCharacter: MovieCharacter) async
+    func addMovieCharacter(_ character: MovieCharacter)
 
 }
 
