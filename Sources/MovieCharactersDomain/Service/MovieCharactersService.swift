@@ -3,5 +3,5 @@
 import Foundation
 
 public protocol MovieCharactersService: AnyObject {
-
+    func movieCharacters() -> AsyncStream<[MovieCharacter]>
 }

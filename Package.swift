@@ -2,13 +2,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "ddd-async-architecture",
+    name: "AsyncFrameworks",
     platforms: [
         .iOS("16.0")
     ],
     products: [
         .library(
-            name: "ddd-async-architecture",
+            name: "AsyncFrameworks",
             targets: [
                 "MovieCharactersDomain",
                 "MovieCharactersFeature",
