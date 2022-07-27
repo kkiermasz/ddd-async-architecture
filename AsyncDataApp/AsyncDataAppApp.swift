@@ -14,15 +14,7 @@ import SwiftUI
 struct AsyncDataAppApp: App {
     var body: some Scene {
         WindowGroup {
-            DashboardView()
+            
         }
-    }
-}
-
-extension DashboardView {
-    init() {
-        let repository = MovieCharactersDataDependencyRegistry.movieCharactersRepository
-        let service = MovieCharactersDomainRegistry.movieCharactersService(with: repository)
-        self.init(service: service)
     }
 }

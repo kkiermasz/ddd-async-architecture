@@ -9,11 +9,13 @@ final class DashboardViewModel: ObservableObject {
 
     @Published private(set) var content: DashboardViewContent = .empty
 
+    private let router: DashboardRouter
     private let model: DashboardModel
 
     // MARK: - Initialization
 
-    init(model: DashboardModel) {
+    init(router: DashboardRouter, model: DashboardModel) {
+        self.router = router
         self.model = model
     }
 

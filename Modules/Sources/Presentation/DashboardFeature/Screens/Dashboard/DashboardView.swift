@@ -3,7 +3,7 @@
 import SwiftUI
 import Utilities
 
-public struct DashboardView: View {
+struct DashboardView: View {
 
     // MARK: - Properties
 
@@ -17,7 +17,7 @@ public struct DashboardView: View {
 
     // MARK: - View
 
-    public var body: some View {
+    var body: some View {
         List(viewModel.content.characters, id: \.id) { character in
             Text(character.name)
         }
