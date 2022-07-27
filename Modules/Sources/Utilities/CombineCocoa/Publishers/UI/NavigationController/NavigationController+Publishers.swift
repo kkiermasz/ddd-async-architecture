@@ -5,6 +5,10 @@ import Combine
 import UIKit
 
 extension NavigationController {
+    public var didShow: AnyPublisher<UIViewController, Never> {
+        baseNavigationController.didShow
+    }
+
     public func didShow(_ viewController: UIViewController) -> AnyPublisher<Void, Never> {
         baseNavigationController.didShow(viewController)
     }

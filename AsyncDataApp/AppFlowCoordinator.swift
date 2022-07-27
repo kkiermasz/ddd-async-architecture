@@ -46,8 +46,8 @@ final class AppFlowCoordinator: Coordinator {
         childCoordinators.append(flow)
     }
 
-    private func startAddMovieCharacterFlow(with navigationController: UINavigationController) {
-        let flow = AddMovieCharacterFlow(navigationController: navigationController)
+    private func startAddMovieCharacterFlow(with presenter: StackScreenPresenter) {
+        let flow = AddMovieCharacterFlow(presenter: presenter)
     }
 
 }

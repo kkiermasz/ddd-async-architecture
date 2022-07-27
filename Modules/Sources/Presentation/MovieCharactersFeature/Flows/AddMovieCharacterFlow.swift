@@ -12,13 +12,13 @@ public final class AddMovieCharacterFlow: Coordinator {
 
     // MARK: - Properties
 
-    private let navigationController: UINavigationController
+    private let presenter: StackScreenPresenter
     private let _finished = PassthroughSubject<Void, Never>()
 
     // MARK: - Initialization
 
-    public init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    public init(presenter: StackScreenPresenter) {
+        self.presenter = presenter
 
         finished = _finished.eraseToAnyPublisher()
     }
@@ -32,12 +32,11 @@ public final class AddMovieCharacterFlow: Coordinator {
     // MARK: - Private
 
     private func presentAddMovieCharacterScreen() {
-        let router = DefaultAddMovieCharacterRouter()
-        let model = DefaultAddMovieCharacterModel()
-        let viewModel = AddMovieCharacterViewModel(router: router, model: model)
-        let view = AddMovieCharacterView(viewModel: viewModel)
+        let screen = AddMovieCharacterScreen()
 
-        navigationController.pushViewController(UIHostingController(rootView: view), animated: true)
+        presenter.push(screen) { [_finished] in
+            _finished.send(())
+        }
     }
 
 }

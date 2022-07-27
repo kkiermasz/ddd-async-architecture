@@ -9,22 +9,23 @@ public final class DashboardFlow: Coordinator {
 
     // MARK: - Events
 
-    public let addNewCharacter: AnyPublisher<UINavigationController, Never>
+    public let addNewCharacter: AnyPublisher<StackScreenPresenter, Never>
 
     // MARK: - Properties
 
     private let window: UIWindow
-    private let navigationController: UINavigationController
+    private let presenter: StackScreenPresenter
     private let movieCharactersServiceFactory: () -> MovieCharactersService
-    private let _addNewCharacter = PassthroughSubject<UINavigationController, Never>()
+    private let _addNewCharacter = PassthroughSubject<StackScreenPresenter, Never>()
 
     private var container = Set<AnyCancellable>()
 
     // MARK: - Initialization
 
     public init(in window: UIWindow, movieCharactersServiceFactory: @escaping () -> MovieCharactersService) {
-        navigationController = UINavigationController()
+        let navigationController = UINavigationController()
         window.rootViewController = navigationController
+        presenter = DefaultStackScreenPresenter(navigationController: DefaultNavigationController(navigationController: navigationController))
         self.window = window
         self.movieCharactersServiceFactory = movieCharactersServiceFactory
 
@@ -41,18 +42,13 @@ public final class DashboardFlow: Coordinator {
     // MARK: - Private
 
     private func presentDashboardScreen() {
-        let router = DefaultDashboardRouter()
-        let model = DefaultDashboardModel(service: movieCharactersServiceFactory())
-        let viewModel = DashboardViewModel(router: router, model: model)
-        let view = DashboardView(viewModel: viewModel)
-        let screen = UIHostingController(rootView: view)
-        screen.navigationItem.title = "Movie characters"
+        let screen = DashboardScreen(movieCharactersServiceFactory: movieCharactersServiceFactory)
 
-        router.addNewCharacter.sink { [_addNewCharacter, navigationController] in
-            _addNewCharacter.send(navigationController)
+        screen.router.addNewCharacter.sink { [_addNewCharacter, presenter] in
+            _addNewCharacter.send(presenter)
         }.store(in: &container)
-
-        navigationController.setViewControllers([screen], animated: false)
+        
+        presenter.replace(with: screen)
     }
 
 }

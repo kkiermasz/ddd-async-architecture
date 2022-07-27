@@ -5,7 +5,7 @@ import UIKit
 public protocol StackScreenPresenter: ScreenPresenter {
     var navigationController: NavigationController { get }
 
-    func push(_ screen: Screen)
+    func push(_ screen: Screen, onBack: (() -> Void)?)
     func replace(with screen: Screen)
 
     func pop()

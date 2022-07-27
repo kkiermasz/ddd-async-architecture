@@ -7,29 +7,23 @@ public final class DefaultNavigationController: NavigationController {
 
     private let navigationController: UINavigationController
 
-    private let backButtonItemProducer: () -> UIBarButtonItem?
-
     // MARK: - Getters
 
     public var baseNavigationController: UINavigationController { navigationController }
 
     // MARK: - Initialization
 
-    public init(navigationController: UINavigationController, backButtonItem: @escaping () -> UIBarButtonItem?) {
+    public init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        backButtonItemProducer = backButtonItem
     }
 
     // MARK: - NavigationController
 
     public func push(_ viewController: UIViewController) {
-        viewController.navigationItem.backBarButtonItem = backButtonItemProducer()
         navigationController.pushViewController(viewController, animated: true)
     }
 
     public func replace(with viewController: UIViewController) {
-        viewController.navigationItem.backBarButtonItem = backButtonItemProducer()
-
         let animated = navigationController.viewControllers.isEmpty == false
         navigationController.setViewControllers([viewController], animated: animated)
     }
