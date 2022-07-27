@@ -32,7 +32,8 @@ let package = Package(
         .target(
             name: "MovieCharactersFeature",
             dependencies: [
-                "MovieCharactersDomain"
+                "MovieCharactersDomain",
+                "Utilities"
             ],
             path: "Sources/Presentation/MovieCharactersFeature"
         ),
