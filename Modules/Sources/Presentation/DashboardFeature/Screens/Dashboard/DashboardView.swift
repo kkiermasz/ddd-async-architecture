@@ -25,6 +25,13 @@ struct DashboardView: View {
         .onFirstAppear {
             viewModel.viewDidAppear()
         }
+        .toolbar {
+            Button {
+                viewModel.plusButtonTapped()
+            } label: {
+                Image(systemName: "plus")
+            }
+        }
     }
 
 }

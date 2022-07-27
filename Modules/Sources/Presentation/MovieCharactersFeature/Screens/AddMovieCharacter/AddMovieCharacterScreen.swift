@@ -19,6 +19,7 @@ final class AddMovieCharacterScreen: Screen {
         let view = AddMovieCharacterView(viewModel: viewModel)
         self.router = router
         viewController = UIHostingController(rootView: view)
+        viewController.navigationItem.title = "Add new character"
     }
 
 }

@@ -31,6 +31,10 @@ final class DashboardViewModel: ObservableObject {
         }
     }
 
+    func plusButtonTapped() {
+        router.addNewCharacterTriggered()
+    }
+
     // MARK: - Private
 
     private func makeContent(for characters: [MovieCharacter]) -> DashboardViewContent {

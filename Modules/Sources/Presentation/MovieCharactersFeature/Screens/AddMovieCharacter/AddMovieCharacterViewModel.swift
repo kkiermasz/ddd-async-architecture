@@ -21,6 +21,8 @@ final class AddMovieCharacterViewModel: ObservableObject {
 
     // MARK: - API
 
-    // MARK: - Private
+    func saveButtonTapped() {
+//        router.
+    }
 
 }

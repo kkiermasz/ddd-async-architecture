@@ -39,15 +39,23 @@ final class AppFlowCoordinator: Coordinator {
     private func startDashboardFlow() {
         let flow = DashboardFlow(in: window) { Self.service }
 
-        flow.addNewCharacter.sink { [weak self] navigationController in
-            self?.startAddMovieCharacterFlow(with: navigationController)
-        }.store(in: &container)
+        flow.addNewCharacter.sink { [weak self] presenter in
+            self?.startAddMovieCharacterFlow(with: presenter)
+        }
+        .store(in: &container)
 
         childCoordinators.append(flow)
     }
 
     private func startAddMovieCharacterFlow(with presenter: StackScreenPresenter) {
         let flow = AddMovieCharacterFlow(presenter: presenter)
+
+        flow.finished.sink { [weak self] in
+            self?.childCoordinators.removeLast()
+        }
+        .store(in: &container)
+
+        childCoordinators.append(flow)
     }
 
 }
