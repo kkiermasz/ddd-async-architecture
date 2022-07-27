@@ -1,12 +1,12 @@
 //  Copyright © 2022 Jakub Kiermasz. All rights reserved.
 
-struct MovieCharactersViewContent: Hashable {
+struct DashboardViewContent: Hashable {
 
     let characters: [MovieCharacterCellContent]
 
 }
 
-extension MovieCharactersViewContent {
+extension DashboardViewContent {
 
     static var empty: Self {
         .init(characters: [])

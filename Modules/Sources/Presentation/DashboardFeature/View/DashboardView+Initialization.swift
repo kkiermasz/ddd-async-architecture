@@ -5,7 +5,7 @@ import MovieCharactersDomain
 extension DashboardView {
     public init(service: MovieCharactersService) {
         let model = DefaultDashboardModel(service: service)
-        self.init(viewModel: MovieCharactersViewModel(model: model))
+        self.init(viewModel: DashboardViewModel(model: model))
     }
 }
 

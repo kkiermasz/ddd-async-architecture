@@ -7,11 +7,11 @@ public struct DashboardView: View {
 
     // MARK: - Properties
 
-    @ObservedObject private var viewModel: MovieCharactersViewModel
+    @ObservedObject private var viewModel: DashboardViewModel
 
     // MARK: - Initialization
 
-    init(viewModel: MovieCharactersViewModel) {
+    init(viewModel: DashboardViewModel) {
         self.viewModel = viewModel
     }
 

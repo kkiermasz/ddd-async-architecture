@@ -3,11 +3,11 @@
 import MovieCharactersDomain
 import SwiftUI
 
-final class MovieCharactersViewModel: ObservableObject {
+final class DashboardViewModel: ObservableObject {
 
     // MARK: - Properties
 
-    @Published private(set) var content: MovieCharactersViewContent = .empty
+    @Published private(set) var content: DashboardViewContent = .empty
 
     private let model: DashboardModel
 
@@ -31,11 +31,11 @@ final class MovieCharactersViewModel: ObservableObject {
 
     // MARK: - Private
 
-    private func makeContent(for characters: [MovieCharacter]) -> MovieCharactersViewContent {
+    private func makeContent(for characters: [MovieCharacter]) -> DashboardViewContent {
         let cellItems = characters.map { character in
-            MovieCharactersViewContent.MovieCharacterCellContent(id: character.id, name: character.name)
+            DashboardViewContent.MovieCharacterCellContent(id: character.id, name: character.name)
         }
-        return MovieCharactersViewContent(characters: cellItems)
+        return DashboardViewContent(characters: cellItems)
     }
 
 }
