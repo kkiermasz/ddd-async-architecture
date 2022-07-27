@@ -39,11 +39,15 @@ final class AppFlowCoordinator: Coordinator {
     private func startDashboardFlow() {
         let flow = DashboardFlow(in: window) { Self.service }
 
+        flow.addNewCharacter.sink { [weak self] navigationController in
+            self?.startAddMovieCharacterFlow(with: navigationController)
+        }.store(in: &container)
+
         childCoordinators.append(flow)
     }
 
-    private func startAddMovieCharacterFlow() {
-
+    private func startAddMovieCharacterFlow(with navigationController: UINavigationController) {
+        let flow = AddMovieCharacterFlow(navigationController: navigationController)
     }
 
 }

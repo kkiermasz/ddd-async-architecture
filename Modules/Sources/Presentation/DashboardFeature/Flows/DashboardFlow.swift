@@ -9,14 +9,14 @@ public final class DashboardFlow: Coordinator {
 
     // MARK: - Events
 
-    let addNewCharacter: AnyPublisher<Void, Never>
+    public let addNewCharacter: AnyPublisher<UINavigationController, Never>
 
     // MARK: - Properties
 
     private let window: UIWindow
     private let navigationController: UINavigationController
     private let movieCharactersServiceFactory: () -> MovieCharactersService
-    private let _addNewCharacter = PassthroughSubject<Void, Never>()
+    private let _addNewCharacter = PassthroughSubject<UINavigationController, Never>()
 
     private var container = Set<AnyCancellable>()
 
@@ -48,8 +48,8 @@ public final class DashboardFlow: Coordinator {
         let screen = UIHostingController(rootView: view)
         screen.navigationItem.title = "Movie characters"
 
-        router.addNewCharacter.sink { [_addNewCharacter] in
-            _addNewCharacter.send(())
+        router.addNewCharacter.sink { [_addNewCharacter, navigationController] in
+            _addNewCharacter.send(navigationController)
         }.store(in: &container)
 
         navigationController.setViewControllers([screen], animated: false)
