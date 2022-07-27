@@ -1,0 +1,7 @@
+//  Created by Jakub Kiermasz on 21/01/2022.
+//  Copyright © 2021 SpotOn. All rights reserved.
+
+module CombineCocoaRuntime {
+    umbrella header "ObjcDelegateProxy.h"
+    export *
+}

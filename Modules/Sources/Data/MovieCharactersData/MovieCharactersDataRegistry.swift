@@ -16,5 +16,5 @@ public final class MovieCharactersDataDependencyRegistry {
     // MARK: - Initialization
 
     private init() {}
-    
+
 }

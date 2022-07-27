@@ -2,7 +2,7 @@
 
 import Foundation
 
-extension MovieCharactersViewContent {
+extension DashboardViewContent {
 
     struct MovieCharacterCellContent: Hashable {
         let id: UUID

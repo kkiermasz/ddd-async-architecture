@@ -32,7 +32,8 @@ let package = Package(
         .target(
             name: "MovieCharactersFeature",
             dependencies: [
-                "MovieCharactersDomain"
+                "MovieCharactersDomain",
+                "Utilities"
             ],
             path: "Sources/Presentation/MovieCharactersFeature"
         ),
@@ -55,6 +56,12 @@ let package = Package(
             ],
             path: "Sources/Data/MovieCharactersData"
         ),
-        .target(name: "Utilities")
+        .target(
+            name: "Utilities",
+            dependencies: [
+                "UtilitiesRuntime"
+            ]
+        ),
+        .target(name: "UtilitiesRuntime")
     ]
 )

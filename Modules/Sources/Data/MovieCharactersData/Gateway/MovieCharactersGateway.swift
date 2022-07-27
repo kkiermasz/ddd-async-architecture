@@ -1,7 +1,7 @@
 //  Copyright © 2022 Jakub Kiermasz. All rights reserved.
 
-import Foundation
 import Combine
+import Foundation
 import MovieCharactersDomain
 
 final class MovieCharactersGateway: MovieCharactersRepository {

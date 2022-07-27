@@ -14,9 +14,9 @@ struct MovieCharacterDataModel {
     // MARK: - Initialization
 
     init(from model: MovieCharactersDomain.MovieCharacter) {
-        self.id = model.id
-        self.name = model.name
-        self.isFavorite = model.isFavorite
+        id = model.id
+        name = model.name
+        isFavorite = model.isFavorite
     }
 
 }

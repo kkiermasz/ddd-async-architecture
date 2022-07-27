@@ -3,21 +3,21 @@
 import SwiftUI
 import Utilities
 
-public struct DashboardView: View {
+struct DashboardView: View {
 
     // MARK: - Properties
 
-    @ObservedObject private var viewModel: MovieCharactersViewModel
+    @ObservedObject private var viewModel: DashboardViewModel
 
     // MARK: - Initialization
 
-    init(viewModel: MovieCharactersViewModel) {
+    init(viewModel: DashboardViewModel) {
         self.viewModel = viewModel
     }
 
     // MARK: - View
 
-    public var body: some View {
+    var body: some View {
         List(viewModel.content.characters, id: \.id) { character in
             Text(character.name)
         }
