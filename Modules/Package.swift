@@ -37,6 +37,13 @@ let package = Package(
             ],
             path: "Sources/Presentation/MovieCharactersFeature"
         ),
+        .testTarget(
+            name: "MovieCharactersFeatureTests",
+            dependencies: [
+                "MovieCharactersFeature"
+            ],
+            path: "Tests/Presentation/MovieCharactersFeatureTests"
+        ),
         .target(
             name: "DashboardFeature",
             dependencies: [

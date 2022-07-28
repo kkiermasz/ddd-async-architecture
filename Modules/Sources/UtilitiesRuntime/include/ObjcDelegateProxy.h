@@ -1,5 +1,4 @@
-//  Created by Jakub Kiermasz on 21/01/2022.
-//  Copyright © 2021 SpotOn. All rights reserved.
+//  Copyright © 2022 Jakub Kiermasz. All rights reserved.
 
 #import <Foundation/Foundation.h>
 
