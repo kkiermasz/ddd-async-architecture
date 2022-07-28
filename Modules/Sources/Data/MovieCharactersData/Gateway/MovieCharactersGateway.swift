@@ -41,8 +41,10 @@ final class MovieCharactersGateway: MovieCharactersRepository {
         characters[index].isFavorite = true
     }
 
-    func addMovieCharacter(_ character: MovieCharactersDomain.MovieCharacter) {
-        characters.append(.init(from: character))
+    func addMovieCharacter(name: String, isFavorite: Bool) async throws {
+        try await Task.sleep(nanoseconds: 1_000_000_000)
+        let model = MovieCharacterDataModel(name: name, isFavorite: isFavorite)
+        characters.append(model)
     }
 
 }

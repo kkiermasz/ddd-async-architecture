@@ -48,7 +48,7 @@ final class AppFlowCoordinator: Coordinator {
     }
 
     private func startAddMovieCharacterFlow(with presenter: StackScreenPresenter) {
-        let flow = AddMovieCharacterFlow(presenter: presenter)
+        let flow = AddMovieCharacterFlow(presenter: presenter) { Self.service }
 
         flow.finished.sink { [weak self] in
             self?.childCoordinators.removeLast()

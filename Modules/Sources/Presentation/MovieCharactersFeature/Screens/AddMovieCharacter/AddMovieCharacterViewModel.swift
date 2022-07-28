@@ -7,7 +7,9 @@ final class AddMovieCharacterViewModel: ObservableObject {
 
     // MARK: - Properties
 
-    @Published private(set) var content: AddMovieCharacterViewContent = AddMovieCharacterViewContent()
+    @Published var name = ""
+    @Published var isFavorite = false
+    @Published private(set) var disabled = false
 
     private let router: AddMovieCharacterRouter
     private let model: AddMovieCharacterModel
@@ -21,8 +23,17 @@ final class AddMovieCharacterViewModel: ObservableObject {
 
     // MARK: - API
 
+    @MainActor
     func saveButtonTapped() {
-//        router.
+        Task {
+            do {
+                disabled = true
+                try await model.addMovieCharacter(name: name, isFavorite: isFavorite)
+                router.finish()
+            } catch {
+                // :)
+            }
+        }
     }
 
 }

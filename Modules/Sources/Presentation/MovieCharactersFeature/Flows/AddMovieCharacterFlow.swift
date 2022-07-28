@@ -3,6 +3,7 @@
 import Combine
 import SwiftUI
 import Utilities
+import MovieCharactersDomain
 
 public final class AddMovieCharacterFlow: Coordinator {
 
@@ -13,12 +14,16 @@ public final class AddMovieCharacterFlow: Coordinator {
     // MARK: - Properties
 
     private let presenter: StackScreenPresenter
+    private let movieCharactersServiceFactory: () -> MovieCharactersService
     private let _finished = PassthroughSubject<Void, Never>()
+
+    private var container = Set<AnyCancellable>()
 
     // MARK: - Initialization
 
-    public init(presenter: StackScreenPresenter) {
+    public init(presenter: StackScreenPresenter, movieCharactersServiceFactory: @escaping () -> MovieCharactersService) {
         self.presenter = presenter
+        self.movieCharactersServiceFactory = movieCharactersServiceFactory
 
         finished = _finished.eraseToAnyPublisher()
     }
@@ -32,7 +37,13 @@ public final class AddMovieCharacterFlow: Coordinator {
     // MARK: - Private
 
     private func presentAddMovieCharacterScreen() {
-        let screen = AddMovieCharacterScreen()
+        let screen = AddMovieCharacterScreen(movieCharactersServiceFactory: movieCharactersServiceFactory)
+
+        screen.router.finished.sink { [_finished, presenter] in
+            presenter.pop()
+            _finished.send(())
+        }
+        .store(in: &container)
 
         presenter.push(screen) { [_finished] in
             _finished.send(())

@@ -8,9 +8,6 @@ struct AddMovieCharacterView: View {
 
     @ObservedObject private var viewModel: AddMovieCharacterViewModel
 
-    @State private var name: String = ""
-    @State private var isFavorite: Bool = false
-
     // MARK: - Initialization
 
     init(viewModel: AddMovieCharacterViewModel) {
@@ -22,8 +19,8 @@ struct AddMovieCharacterView: View {
     var body: some View {
         Form {
             Section {
-                TextField("Name", text: $name)
-                Toggle("Is favorite", isOn: $isFavorite)
+                TextField("Name", text: $viewModel.name)
+                Toggle("Is favorite", isOn: $viewModel.isFavorite)
             }
         }
         .toolbar {
@@ -33,6 +30,7 @@ struct AddMovieCharacterView: View {
                 Text("Save")
             }
         }
+        .disabled(viewModel.disabled)
     }
 
 }

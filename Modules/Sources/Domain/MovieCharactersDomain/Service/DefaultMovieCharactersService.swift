@@ -28,8 +28,8 @@ final class DefaultMovieCharactersService: MovieCharactersService {
         await movieCharactersRepository.addToFavorites(movieCharacter: character)
     }
 
-    func addMovieCharacter(_ character: MovieCharacter) {
-        movieCharactersRepository.addMovieCharacter(character)
+    func addMovieCharacter(name: String, isFavorite: Bool) async throws {
+        try await movieCharactersRepository.addMovieCharacter(name: name, isFavorite: isFavorite)
     }
 
 }
