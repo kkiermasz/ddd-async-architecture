@@ -5,6 +5,5 @@ import MovieCharactersDomain
 protocol AddMovieCharacterModel: AnyObject {
 
     func addMovieCharacter(name: String, isFavorite: Bool) async throws
-    func observeCharacters() -> AsyncStream<[MovieCharacter]>
 
 }

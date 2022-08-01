@@ -20,8 +20,4 @@ final class DefaultAddMovieCharacterModel: AddMovieCharacterModel {
         try await service.addMovieCharacter(name: name, isFavorite: isFavorite)
     }
 
-    func observeCharacters() -> AsyncStream<[MovieCharactersDomain.MovieCharacter]> {
-        service.movieCharacters()
-    }
-
 }
