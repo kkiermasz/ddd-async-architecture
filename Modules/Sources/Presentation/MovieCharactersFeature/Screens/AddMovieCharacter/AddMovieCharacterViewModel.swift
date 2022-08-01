@@ -2,6 +2,7 @@
 
 import MovieCharactersDomain
 import SwiftUI
+import Utilities
 
 final class AddMovieCharacterViewModel: ObservableObject {
 
@@ -14,6 +15,8 @@ final class AddMovieCharacterViewModel: ObservableObject {
     private let router: AddMovieCharacterRouter
     private let model: AddMovieCharacterModel
 
+    private let container = SubscriptionsContainer()
+
     // MARK: - Initialization
 
     init(router: AddMovieCharacterRouter, model: AddMovieCharacterModel) {
@@ -25,15 +28,17 @@ final class AddMovieCharacterViewModel: ObservableObject {
 
     @MainActor
     func saveButtonTapped() {
-        Task {
+        Task { [weak self, model, router] in
             do {
-                disabled = true
-                try await model.addMovieCharacter(name: name, isFavorite: isFavorite)
+                self?.disabled = true
+                guard let self = self else { return }
+                try await model.addMovieCharacter(name: self.name, isFavorite: self.isFavorite)
                 router.finish()
             } catch {
                 // :)
             }
         }
+        .store(in: container)
     }
 
 }
