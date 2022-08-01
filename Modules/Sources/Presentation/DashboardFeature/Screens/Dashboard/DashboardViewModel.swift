@@ -2,6 +2,7 @@
 
 import MovieCharactersDomain
 import SwiftUI
+import Utilities
 
 final class DashboardViewModel: ObservableObject {
 
@@ -11,6 +12,8 @@ final class DashboardViewModel: ObservableObject {
 
     private let router: DashboardRouter
     private let model: DashboardModel
+
+    private let container = SubscriptionsContainer()
 
     // MARK: - Initialization
 
@@ -23,12 +26,13 @@ final class DashboardViewModel: ObservableObject {
 
     @MainActor
     func viewDidAppear() {
-        // check dealloc
-        Task {
+        Task { [weak self, model] in
             for await characters in model.observeCharacters() {
-                content = makeContent(for: characters)
+                guard let self = self else { return }
+                self.content = self.makeContent(for: characters)
             }
         }
+        .store(in: container)
     }
 
     func plusButtonTapped() {
